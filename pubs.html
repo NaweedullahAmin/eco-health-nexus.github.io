@@ -4,175 +4,642 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publications - The Eco-Health Nexus Group</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
+        :root {
+            --primary: #1a535c;
+            --secondary: #2c7873;
+            --accent: #4ecdc4;
+            --light: #f8f9fa;
+            --dark: #333;
+            --white: #ffffff;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            color: #333;
-            background-color: #f8f9fa;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        header {
-            background: linear-gradient(135deg, #2c7873 0%, #1a535c 100%);
-            color: white;
-            padding: 2rem 0;
-            margin-bottom: 2rem;
-        }
-        .header-content {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
-        h1 {
+        
+        /* Header */
+        .main-header {
+            background: linear-gradient(rgba(26, 83, 92, 0.8), rgba(26, 83, 92, 0.9)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3') center/cover;
+            color: var(--white);
+            padding: 1rem 0 3rem;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: contain;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 3px solid var(--white);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
             margin: 0;
-            font-size: 2rem;
         }
-        .back-link {
-            color: white;
-            text-decoration: none;
-            margin-top: 1rem;
-            display: inline-block;
-        }
-        .publication {
-            background: white;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .publication h3 {
-            margin: 0 0 0.5rem 0;
-            color: #1a535c;
-        }
-        .journal {
-            font-style: italic;
-            color: #555;
-            margin-bottom: 0.5rem;
-        }
-        .status {
-            display: inline-block;
-            padding: 0.2rem 0.8rem;
-            border-radius: 4px;
+        
+        .logo-text .tagline {
             font-size: 0.9rem;
-            font-weight: bold;
+            opacity: 0.9;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        /* Navigation */
+        .main-nav {
+            background: var(--primary);
+            padding: 0.8rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .nav-links a.active {
+            background: var(--accent);
+            color: var(--dark);
+        }
+        
+        /* Publications Content */
+        .publications-content {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        /* Publications Grid */
+        .publications-category {
+            margin-bottom: 4rem;
+        }
+        
+        .publications-category h3 {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .publications-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .publication-card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            padding: 2rem;
+            transition: all 0.4s ease;
+            border-left: 5px solid var(--accent);
+            position: relative;
+        }
+        
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .publication-header {
+            margin-bottom: 1rem;
+        }
+        
+        .publication-title {
+            font-size: 1.3rem;
+            line-height: 1.4;
+            margin: 0 0 1rem 0;
+            color: var(--primary);
+        }
+        
+        .publication-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .publication-title a:hover {
+            color: var(--secondary);
+        }
+        
+        .publication-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+        
+        .journal-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark);
+            font-style: italic;
+        }
+        
+        .journal-info i {
+            color: var(--secondary);
+        }
+        
+        .date-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .date-info i {
+            color: var(--secondary);
+        }
+        
+        .doi-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .doi-link:hover {
+            color: var(--primary);
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
             margin-top: 0.5rem;
         }
-        .status.published {
-            background-color: #e8f5e8;
+        
+        .status-published {
+            background: #e8f5e8;
             color: #2e7d32;
+            border: 1px solid #c8e6c9;
         }
-        .status.submitted {
-            background-color: #fff3e0;
+        
+        .status-submitted {
+            background: #fff3e0;
             color: #ef6c00;
+            border: 1px solid #ffe0b2;
         }
-        h2 {
-            color: #1a535c;
-            border-bottom: 2px solid #2c7873;
-            padding-bottom: 0.5rem;
-            margin-top: 2rem;
+        
+        .status-accepted {
+            background: #e3f2fd;
+            color: #1565c0;
+            border: 1px solid #bbdefb;
+        }
+        
+        .publication-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--accent);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            background: var(--secondary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+        
+        .action-btn-outline {
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .action-btn-outline:hover {
+            background: var(--secondary);
+            color: var(--white);
+        }
+        
+        /* Footer */
+        .main-footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .publication-details {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            
+            .header-top {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                justify-content: center;
+            }
+            
+            .publication-title {
+                font-size: 1.1rem;
+            }
+            
+            .publication-actions {
+                flex-direction: column;
+            }
+            
+            .action-btn {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>Publications</h1>
-            <a href="index.html" class="back-link">← Back to Home</a>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <img src="./Logo.png" alt="Eco-Health Nexus Group Logo" class="logo">
+                    <div class="logo-text">
+                        <h1>Eco-Health Nexus</h1>
+                        <div class="tagline">Kabul University Research Group</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero">
+                <h2>Publications</h2>
+                <p>Peer-reviewed research contributing to environmental science and public health</p>
+            </div>
         </div>
     </header>
 
-    <div class="container">
-        <h2>Peer-Reviewed Journal Articles</h2>
-        
-        <div class="publication">
-            <h3><a href="https://doi.org/10.62810/jnsr.v3i3.268" style="color: inherit; text-decoration: none;">Zinc Sulfate Monohydrate (ZnSO₄·H₂O) Toxicity in Medaka Embryos: Impacts of Water Type on Lethal Concentration</a></h3>
-            <div class="journal">Pertanika Journal of Science & Technology | September 2025</div>
-            <div class="status published">Published</div>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research Projects</a></li>
+                <li><a href="pubs.html" class="active">Publications</a></li>
+                <li><a href="our-team.html">Our Team</a></li>
+            </ul>
         </div>
-        
-        <div class="publication">
-            <h3><a href="https://doi.org/10.47836/pjst.33.6.06" style="color: inherit; text-decoration: none;">The Effects of Pre-Composting Subjected to Black Soldier Fly Larvae Digestion on Agri-Food Waste Recovery Properties</a></h3>
-            <div class="journal">Pertanika Journal of Science & Technology | September 2025</div>
-            <div class="status published">Published</div>
-        </div>
+    </nav>
 
-               
-        <div class="publication">
-            <h3><a href="https://doi.org/10.1093/etojnl/vgaf174" style="color: inherit; text-decoration: none;">Salinity as a Shield: How Elevated Salinity Mitigates ZnO Nanoparticle Toxicity in Javanese Medaka (Oryzias javanicus) Embryos</a></h3>
-            <div class="journal">Environmental Toxicology and Chemistry | July 2025</div>
-            <div class="status published">Published</div>
-        </div>
+    <!-- Publications Content -->
+    <main class="publications-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research Publications</h2>
+                <p>Our contributions to scientific literature in ecotoxicology and environmental health</p>
+            </div>
 
-        <div class="publication">
-            <h3><a href="https://doi.org/10.1186/s40066-025-00530-7" style="color: inherit; text-decoration: none;">Copper Oxide-based Nanoparticles in Agro-Nanotechnology: Advances and Applications for Sustainable Farming</a></h3>
-            <div class="journal">Agriculture & Food Security | May 2025</div>
-            <div class="status published">Published</div>
-        </div>
+            <!-- Peer-Reviewed Journal Articles -->
+            <div class="publications-category">
+                <h3>Peer-Reviewed Journal Articles</h3>
+                <div class="publications-grid">
+                    
+                    <div class="publication-card">
+                        <div class="publication-header">
+                            <h3 class="publication-title">
+                                <a href="https://doi.org/10.62810/jnsr.v3i3.268">Zinc Sulfate Monohydrate (ZnSO₄·H₂O) Toxicity in Medaka Embryos: Impacts of Water Type on Lethal Concentration</a>
+                            </h3>
+                            <div class="publication-details">
+                                <div class="journal-info">
+                                    <i class="fas fa-book"></i>
+                                    <span>Pertanika Journal of Science & Technology</span>
+                                </div>
+                                <div class="date-info">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>September 2025</span>
+                                </div>
+                                <a href="https://doi.org/10.62810/jnsr.v3i3.268" class="doi-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>View DOI</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="status-badge status-published">
+                            <i class="fas fa-check-circle"></i>
+                            Published
+                        </div>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.62810/jnsr.v3i3.268" class="action-btn">
+                                <i class="fas fa-external-link-alt"></i>
+                                Read Paper
+                            </a>
+                        </div>
+                    </div>
 
-        <div class="publication">
-            <h3><a href="https://doi.org/10.62810/jnsr.v3i1.103" style="color: inherit; text-decoration: none;">Environmental Fate and Toxicity of Zinc Oxide Nanoparticles in Aquatic Ecosystems: A Comprehensive Review</a></h3>
-            <div class="journal">Journal of Natural Science Review | March 2025</div>
-            <div class="status published">Published</div>
-        </div>
+                    <div class="publication-card">
+                        <div class="publication-header">
+                            <h3 class="publication-title">
+                                <a href="https://doi.org/10.47836/pjst.33.6.06">The Effects of Pre-Composting Subjected to Black Soldier Fly Larvae Digestion on Agri-Food Waste Recovery Properties</a>
+                            </h3>
+                            <div class="publication-details">
+                                <div class="journal-info">
+                                    <i class="fas fa-book"></i>
+                                    <span>Pertanika Journal of Science & Technology</span>
+                                </div>
+                                <div class="date-info">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>September 2025</span>
+                                </div>
+                                <a href="https://doi.org/10.47836/pjst.33.6.06" class="doi-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>View DOI</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="status-badge status-published">
+                            <i class="fas fa-check-circle"></i>
+                            Published
+                        </div>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.47836/pjst.33.6.06" class="action-btn">
+                                <i class="fas fa-external-link-alt"></i>
+                                Read Paper
+                            </a>
+                        </div>
+                    </div>
 
-        <div class="publication">
-            <h3><a href="https://doi.org/10.47836/pjst.32.6.22" style="color: inherit; text-decoration: none;">Dehydrated Food Waste and Leftover for Trench Composting</a></h3>
-            <div class="journal">Pertanika Journal of Science & Technology | October 2024</div>
-            <div class="status published">Published</div>
-        </div>
+                    <div class="publication-card">
+                        <div class="publication-header">
+                            <h3 class="publication-title">
+                                <a href="https://doi.org/10.1093/etojnl/vgaf174">Salinity as a Shield: How Elevated Salinity Mitigates ZnO Nanoparticle Toxicity in Javanese Medaka (Oryzias javanicus) Embryos</a>
+                            </h3>
+                            <div class="publication-details">
+                                <div class="journal-info">
+                                    <i class="fas fa-book"></i>
+                                    <span>Environmental Toxicology and Chemistry</span>
+                                </div>
+                                <div class="date-info">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>July 2025</span>
+                                </div>
+                                <a href="https://doi.org/10.1093/etojnl/vgaf174" class="doi-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>View DOI</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="status-badge status-published">
+                            <i class="fas fa-check-circle"></i>
+                            Published
+                        </div>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.1093/etojnl/vgaf174" class="action-btn">
+                                <i class="fas fa-external-link-alt"></i>
+                                Read Paper
+                            </a>
+                        </div>
+                    </div>
 
-        <div class="publication">
-            <h3><a href="https://doi.org/10.47836/pjtas.47.2.16" style="color: inherit; text-decoration: none;">Developmental Toxicity of Zinc Oxide Nanoparticles on the Early Life Stage of Java Medaka (Oryzias javanicus Bleekr, 1856)</a></h3>
-            <div class="journal">Pertanika Journal of Tropical Agricultural Science | May 2024</div>
-            <div class="status published">Published</div>
-        </div>
+                    <!-- Continue with other published papers in the same format -->
+                    <!-- Add the rest of your published papers here following the same structure -->
 
-        <div class="publication">
-            <h3><a href="https://doi.org/10.3390/ani11082170" style="color: inherit; text-decoration: none;">Toxicity of Zinc Oxide Nanoparticles on the Embryo of Javanese medaka (Oryzias javanicus Bleeker, 1856): A Comparative Study</a></h3>
-            <div class="journal">Animals | July 2021</div>
-            <div class="status published">Published</div>
-        </div>
+                </div>
+            </div>
 
-        <h2>Under Review</h2>
-        
-        <div class="publication">
-            <h3>Willing but Unable: Applying the Theory of Planned Behavior to Plastic Waste Reduction in Kabul, Afghanistan</h3>
-            <div class="journal">BMC Public Health | Submitted October 2025</div>
-            <div class="status submitted">Under Review</div>
-        </div>
+            <!-- Under Review -->
+            <div class="publications-category">
+                <h3>Under Review</h3>
+                <div class="publications-grid">
+                    
+                    <div class="publication-card">
+                        <div class="publication-header">
+                            <h3 class="publication-title">Willing but Unable: Applying the Theory of Planned Behavior to Plastic Waste Reduction in Kabul, Afghanistan</h3>
+                            <div class="publication-details">
+                                <div class="journal-info">
+                                    <i class="fas fa-book"></i>
+                                    <span>BMC Public Health</span>
+                                </div>
+                                <div class="date-info">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Submitted October 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-badge status-submitted">
+                            <i class="fas fa-clock"></i>
+                            Under Review
+                        </div>
+                    </div>
 
-        <div class="publication">
-            <h3>Hydrogeochemical Assessment of Arsenic and Physicochemical Contamination in Groundwater of Pul-e-Charkhi and Logar Region, Afghanistan</h3>
-            <div class="journal">BMC Environmental Science | Submitted November 2025</div>
-            <div class="status submitted">Under Review</div>
-        </div>
+                    <div class="publication-card">
+                        <div class="publication-header">
+                            <h3 class="publication-title">Hydrogeochemical Assessment of Arsenic and Physicochemical Contamination in Groundwater of Pul-e-Charkhi and Logar Region, Afghanistan</h3>
+                            <div class="publication-details">
+                                <div class="journal-info">
+                                    <i class="fas fa-book"></i>
+                                    <span>BMC Environmental Science</span>
+                                </div>
+                                <div class="date-info">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Submitted November 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-badge status-submitted">
+                            <i class="fas fa-clock"></i>
+                            Under Review
+                        </div>
+                    </div>
 
-        <div class="publication">
-            <h3>Assessment of Water Quality and Growth Performance of Rainbow Trout (Oncorhynchus mykiss) at Qargha Fish Farm, Afghanistan</h3>
-            <div class="journal">BMC Agriculture | Submitted November 2025</div>
-            <div class="status submitted">Under Review</div>
-        </div>
+                    <div class="publication-card">
+                        <div class="publication-header">
+                            <h3 class="publication-title">Assessment of Water Quality and Growth Performance of Rainbow Trout (Oncorhynchus mykiss) at Qargha Fish Farm, Afghanistan</h3>
+                            <div class="publication-details">
+                                <div class="journal-info">
+                                    <i class="fas fa-book"></i>
+                                    <span>BMC Agriculture</span>
+                                </div>
+                                <div class="date-info">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Submitted November 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-badge status-submitted">
+                            <i class="fas fa-clock"></i>
+                            Under Review
+                        </div>
+                    </div>
 
-        <h2>Conference Papers</h2>
-        
-        <div class="publication">
-            <h3>The Dual Role of Environment and Particle Characteristics in Shaping Nanoplastics Toxicity and Fate</h3>
-            <div class="journal">National Conference on Environmental Sustainability, Disaster, and Natural Resources Management | Kabul, Afghanistan | October 2025</div>
-            <div class="status published">Accepted</div>
-        </div>
+                </div>
+            </div>
 
-        <div class="publication">
-            <h3>Interactive Effect of Salinity and Zinc Oxide Nanoparticles on Javanese Medaka (Oryzias javanicus) Embryos</h3>
-            <div class="journal">The 12th International Fundamental Science Congress | Kuala Lumpur, Malaysia | Aug 2021</div>
-            <div class="status published">Presented</div>
+            <!-- Conference Papers -->
+            <div class="publications-category">
+                <h3>Conference Papers</h3>
+                <div class="publications-grid">
+                    
+                    <div class="publication-card">
+                        <div class="publication-header">
+                            <h3 class="publication-title">The Dual Role of Environment and Particle Characteristics in Shaping Nanoplastics Toxicity and Fate</h3>
+                            <div class="publication-details">
+                                <div class="journal-info">
+                                    <i class="fas fa-users"></i>
+                                    <span>National Conference on Environmental Sustainability, Disaster, and Natural Resources Management</span>
+                                </div>
+                                <div class="date-info">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Kabul, Afghanistan | October 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-badge status-accepted">
+                            <i class="fas fa-check-circle"></i>
+                            Accepted
+                        </div>
+                    </div>
+
+                    <div class="publication-card">
+                        <div class="publication-header">
+                            <h3 class="publication-title">Interactive Effect of Salinity and Zinc Oxide Nanoparticles on Javanese Medaka (Oryzias javanicus) Embryos</h3>
+                            <div class="publication-details">
+                                <div class="journal-info">
+                                    <i class="fas fa-users"></i>
+                                    <span>The 12th International Fundamental Science Congress</span>
+                                </div>
+                                <div class="date-info">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Kuala Lumpur, Malaysia | August 2021</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-badge status-published">
+                            <i class="fas fa-check-circle"></i>
+                            Presented
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 The Eco-Health Nexus Group | Faculty of Biology, Kabul University</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
- 
