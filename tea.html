@@ -150,7 +150,7 @@
             border-radius: 2px;
         }
         
-        /* Team Members */
+        /* Team Members - SIDE BY SIDE LAYOUT */
         .team-category {
             margin-bottom: 4rem;
         }
@@ -167,7 +167,7 @@
         
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: 1fr;
             gap: 2.5rem;
         }
         
@@ -177,45 +177,61 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             overflow: hidden;
             transition: all 0.4s ease;
+            display: flex;
+            min-height: 300px;
         }
         
         .team-member-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
         
         .member-photo {
-            width: 100%;
-            height: 250px;
+            width: 35%;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            font-size: 4rem;
+            overflow: hidden;
+            flex-shrink: 0;
         }
         
         .member-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .member-photo:hover img {
+            transform: scale(1.05);
+        }
+        
+        .member-photo i {
+            color: var(--white);
+            font-size: 3rem;
         }
         
         .member-info {
-            padding: 2rem;
+            padding: 2.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .member-info h4 {
             color: var(--primary);
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
         }
         
         .member-role {
             color: var(--secondary);
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-size: 1.1rem;
+            line-height: 1.4;
         }
         
         .member-details {
@@ -223,33 +239,43 @@
         }
         
         .detail-item {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
         
         .detail-item h5 {
             color: var(--primary);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
             font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .detail-item h5 i {
+            color: var(--accent);
         }
         
         .detail-item p {
             color: var(--dark);
-            line-height: 1.5;
+            line-height: 1.6;
+            margin: 0;
         }
         
         .member-contact {
             border-top: 1px solid #eee;
             padding-top: 1.5rem;
+            margin-top: auto;
         }
         
         .member-contact h5 {
             color: var(--primary);
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
         }
         
         .contact-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
             flex-wrap: wrap;
         }
         
@@ -257,11 +283,19 @@
             color: var(--secondary);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            background: rgba(78, 205, 196, 0.1);
         }
         
         .contact-links a:hover {
-            color: var(--accent);
+            color: var(--white);
+            background: var(--secondary);
+            transform: translateY(-2px);
         }
         
         /* Footer */
@@ -279,9 +313,20 @@
             opacity: 0.8;
         }
         
+        /* Responsive Design for Side-by-Side Layout */
         @media (max-width: 768px) {
-            .team-grid {
-                grid-template-columns: 1fr;
+            .team-member-card {
+                flex-direction: column;
+                min-height: auto;
+            }
+            
+            .member-photo {
+                width: 100%;
+                height: 250px;
+            }
+            
+            .member-info {
+                padding: 2rem;
             }
             
             .header-top {
@@ -294,6 +339,16 @@
                 flex-wrap: wrap;
                 gap: 0.5rem;
                 justify-content: center;
+            }
+            
+            .contact-links {
+                justify-content: center;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
             }
         }
     </style>
@@ -326,7 +381,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="research.html">Research Projects</a></li>
                 <li><a href="pubs.html">Publications</a></li>
-                <li><a href="team.html" class="active">Our Team</a></li>
+                <li><a href="our-team.html" class="active">Our Team</a></li>
             </ul>
         </div>
     </nav>
@@ -346,7 +401,6 @@
                     <div class="team-member-card">
                         <div class="member-photo">
                             <img src="./my-photo.jpg" alt="Naweedullah Amin">
-                            
                         </div>
                         <div class="member-info">
                             <h4>Naweedullah Amin</h4>
@@ -354,11 +408,11 @@
                             
                             <div class="member-details">
                                 <div class="detail-item">
-                                    <h5>Research Interests:</h5>
+                                    <h5><i class="fas fa-flask"></i> Research Interests:</h5>
                                     <p>Ecotoxicology, Nanoparticle impacts on aquatic ecosystems, Water quality assessment, Environmental public health, Plastic pollution behavior</p>
                                 </div>
                                 <div class="detail-item">
-                                    <h5>Expertise:</h5>
+                                    <h5><i class="fas fa-tools"></i> Expertise:</h5>
                                     <p>Fish bioassays, XRD, DLS, TEM, ICP-MS, Ecological risk assessment, Biostatistics (Python & SPSS)</p>
                                 </div>
                             </div>
@@ -383,19 +437,19 @@
                     <!-- Student 1 -->
                     <div class="team-member-card">
                         <div class="member-photo">
-                            <!-- Replace with actual photo -->
-                            <i class="fas fa-user"></i>
+                            <i class="fas fa-user-graduate"></i>
                         </div>
                         <div class="member-info">
                             <h4>Sayed Taha Rasooli</h4>
-                                                       
+                            <div class="member-role">Undergraduate Research Assistant</div>
+                            
                             <div class="member-details">
                                 <div class="detail-item">
-                                    <h5>Research Title:</h5>
+                                    <h5><i class="fas fa-graduation-cap"></i> Research Title:</h5>
                                     <p>Assessment of drinking water contamination knowledge among university students</p>
                                 </div>
                                 <div class="detail-item">
-                                    <h5>Research Focus:</h5>
+                                    <h5><i class="fas fa-bullseye"></i> Research Focus:</h5>
                                     <p>Water quality, Public health behavior, Survey methodology</p>
                                 </div>
                             </div>
@@ -412,8 +466,7 @@
                     <!-- Student 2 -->
                     <div class="team-member-card">
                         <div class="member-photo">
-                            <!-- Replace with actual photo -->
-                            <i class="fas fa-user"></i>
+                            <i class="fas fa-user-graduate"></i>
                         </div>
                         <div class="member-info">
                             <h4>Student Name 2</h4>
@@ -421,11 +474,11 @@
                             
                             <div class="member-details">
                                 <div class="detail-item">
-                                    <h5>Research Title:</h5>
+                                    <h5><i class="fas fa-graduation-cap"></i> Research Title:</h5>
                                     <p>Plastic waste management behaviors in Kabul residents</p>
                                 </div>
                                 <div class="detail-item">
-                                    <h5>Research Focus:</h5>
+                                    <h5><i class="fas fa-bullseye"></i> Research Focus:</h5>
                                     <p>Plastic pollution, Theory of Planned Behavior, Social surveys</p>
                                 </div>
                             </div>
@@ -438,8 +491,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Add more students as needed -->
                 </div>
             </div>
         </div>
