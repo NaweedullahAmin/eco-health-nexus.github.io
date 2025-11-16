@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Eco-Health Nexus Group</title>
+    <title>The Eco-Health Nexus Group - Environmental Health Research</title>
+    <meta name="description" content="Leading ecotoxicology and environmental health research group at Kabul University. Specializing in nanoparticles, water quality, and public health in Afghanistan.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Base Styles */
         :root {
             --primary: #1a535c;
             --secondary: #2c7873;
@@ -14,6 +14,7 @@
             --light: #f8f9fa;
             --dark: #333;
             --white: #ffffff;
+            --transition: all 0.3s ease;
         }
         
         * {
@@ -27,6 +28,7 @@
             line-height: 1.7;
             color: var(--dark);
             background-color: var(--light);
+            overflow-x: hidden;
         }
         
         .container {
@@ -35,11 +37,40 @@
             padding: 0 2rem;
         }
         
-        /* Header with Banner */
-        .main-header {
-            background: linear-gradient(rgba(26, 83, 92, 0.8), rgba(26, 83, 92, 0.9)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3') center/cover;
+        /* Video Header */
+        .video-header {
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+        }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(26, 83, 92, 0.7), rgba(26, 83, 92, 0.9));
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .header-content {
+            text-align: center;
             color: var(--white);
-            padding: 1rem 0 3rem;
+            z-index: 3;
             position: relative;
         }
         
@@ -48,25 +79,25 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 2rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            z-index: 4;
         }
         
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
         
         .logo {
-            width: 100px;
-            height: 100px;
-            background: var(--white);
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--primary);
-            font-size: 1.2rem;
+            object-fit: contain;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             border: 3px solid var(--white);
         }
@@ -74,41 +105,28 @@
         .logo-text h1 {
             font-size: 1.8rem;
             margin: 0;
+            color: var(--white);
         }
         
         .logo-text .tagline {
             font-size: 0.9rem;
             opacity: 0.9;
-        }
-        
-        .contact-header {
-            display: flex;
-            gap: 1.5rem;
-            font-size: 0.9rem;
-        }
-        
-        .contact-header a {
             color: var(--white);
-            text-decoration: none;
-        }
-        
-        .contact-header a:hover {
-            text-decoration: underline;
         }
         
         .hero {
-            text-align: center;
             padding: 2rem 0;
         }
         
         .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
             font-weight: 700;
+            line-height: 1.2;
         }
         
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             max-width: 800px;
             margin: 0 auto 2rem;
             opacity: 0.95;
@@ -122,20 +140,22 @@
         }
         
         .btn {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
             background: var(--accent);
             color: var(--dark);
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
             background: var(--white);
         }
         
@@ -150,6 +170,9 @@
             background: var(--primary);
             padding: 0.8rem 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         
         .nav-container {
@@ -169,7 +192,7 @@
             font-weight: 500;
             padding: 0.5rem 1rem;
             border-radius: 4px;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         
         .nav-links a:hover, .nav-links a.active {
@@ -181,9 +204,74 @@
             color: var(--dark);
         }
         
-        /* Main Content */
-        .main-content {
-            padding: 4rem 0;
+        /* Featured Research Section */
+        .featured-research {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+        
+        .featured-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: flex;
+            min-height: 400px;
+            transition: var(--transition);
+        }
+        
+        .featured-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+        
+        .featured-image {
+            flex: 1;
+            background: linear-gradient(45deg, #2c7873, #1a535c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--white);
+        }
+        
+        .featured-content {
+            flex: 1;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .featured-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .featured-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Values Section */
+        .values-section {
+            padding: 5rem 0;
+            background: var(--light);
         }
         
         .section-title {
@@ -193,7 +281,7 @@
         }
         
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
             position: relative;
             display: inline-block;
@@ -211,215 +299,206 @@
             border-radius: 2px;
         }
         
-        /* Four Box Grid Layout */
-        .grid-container {
+        .values-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
         }
         
-        .box {
+        .value-card {
             background: var(--white);
             padding: 2.5rem;
-            border-radius: 12px;
+            border-radius: 15px;
+            text-align: center;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid transparent;
         }
         
-        .box:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-        
-        .box:hover {
-            transform: translateY(-10px);
+        .value-card:hover {
+            transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-color: var(--accent);
         }
         
-        .box:hover:before {
-            width: 10px;
-        }
-        
-        .box h2 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.6rem;
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--white);
         }
         
-        /* Mission Section */
-        .mission-list {
-            list-style: none;
+        .value-title {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
         }
         
-        .mission-list li {
-            margin-bottom: 1.2rem;
-            padding-left: 2rem;
-            position: relative;
+        /* Partners Section */
+        .partners-section {
+            padding: 4rem 0;
+            background: var(--white);
         }
         
-        .mission-list li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        /* Team Section */
-        .team-member {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .team-member:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .team-member h3 {
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-        
-        .team-links {
-            margin: 1.5rem 0;
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .team-links a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .team-links a:hover {
-            color: var(--accent);
-        }
-        
-        /* Research Focus */
-        .focus-grid {
+        .partners-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-        
-        .focus-area {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.2rem;
-            background: rgba(78, 205, 196, 0.1);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .focus-area:hover {
-            background: rgba(78, 205, 196, 0.2);
-            transform: translateX(5px);
-        }
-        
-        .focus-icon {
-            font-size: 1.8rem;
-            color: var(--secondary);
-            min-width: 50px;
-        }
-        
-        .focus-content h3 {
-            margin: 0 0 0.5rem;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-        
-        /* News Section */
-        .news-item {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .news-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .news-item h3 {
-            color: var(--primary);
-            margin: 0 0 0.8rem;
-            font-size: 1.2rem;
-            display: flex;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 3rem;
             align-items: center;
-            gap: 0.8rem;
+            justify-items: center;
         }
         
-        /* Metrics Section */
-        .metrics {
+        .partner-logo {
+            height: 80px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+        
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        /* Enhanced Metrics */
+        .metrics-section {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--white);
-            padding: 4rem 0;
+            padding: 5rem 0;
             text-align: center;
-            margin: 4rem 0;
-            border-radius: 12px;
         }
         
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
         }
         
         .metric-item {
-            padding: 1.5rem;
+            padding: 2rem;
+        }
+        
+        .metric-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
         }
         
         .metric-value {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             color: var(--accent);
         }
         
         .metric-label {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             opacity: 0.9;
         }
         
-        /* Footer */
+        /* Gallery Carousel */
+        .gallery-section {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+        
+        .gallery-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery-item {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+        }
+        
+        .gallery-caption {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 4rem 0;
+            background: var(--white);
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--secondary);
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .newsletter-input:focus {
+            border-color: var(--accent);
+        }
+        
+        /* Enhanced Footer */
         .main-footer {
             background: var(--dark);
             color: var(--white);
-            padding: 4rem 0 2rem;
+            padding: 4rem 0 1rem;
         }
         
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 3rem;
             margin-bottom: 3rem;
         }
         
-        .footer-about h3, .footer-links h3, .footer-contact h3 {
+        .footer-about h3, .footer-links h3, .footer-contact h3, .footer-social h3 {
             color: var(--accent);
             margin-bottom: 1.5rem;
             font-size: 1.3rem;
+        }
+        
+        .footer-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            filter: grayscale(100%) brightness(200%);
         }
         
         .footer-links ul {
@@ -433,11 +512,22 @@
         .footer-links a {
             color: var(--white);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .footer-links a:hover {
             color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .social-links {
@@ -450,13 +540,13 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background: rgba(255,255,255,0.1);
             border-radius: 50%;
             color: var(--white);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         
         .social-links a:hover {
@@ -473,30 +563,40 @@
             opacity: 0.8;
         }
         
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .metrics-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: var(--dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
         }
         
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header-top {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-            
-            .contact-header {
-                justify-content: center;
+            .video-header {
+                height: 60vh;
             }
             
             .hero h2 {
@@ -507,83 +607,94 @@
                 font-size: 1.1rem;
             }
             
+            .header-top {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
             .nav-links {
                 flex-wrap: wrap;
                 gap: 0.5rem;
                 justify-content: center;
             }
             
-            .metrics-grid {
-                grid-template-columns: 1fr;
+            .featured-card {
+                flex-direction: column;
             }
             
             .footer-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
-            .container {
-                padding: 0 1.5rem;
-            }
-            
-            .box {
-                padding: 2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .cta-buttons {
+            .newsletter-form {
                 flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 250px;
-                text-align: center;
             }
         }
         
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Animation Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .fade-in {
-            animation: fadeIn 0.8s ease forwards;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .count-up {
+            animation: countUp 1s ease forwards;
         }
     </style>
 </head>
 <body>
-    <!-- Header with Banner -->
-    <!-- Header with Banner -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-top">
-                <div class="logo-container">
-                    <img src="./Logo.png" alt="Eco-Health Nexus Group Logo" class="logo">
-                        <div class="logo-text">
-                            <h1>Eco-Health Nexus</h1>
-                            <div class="tagline">Kabul University Research Group</div>
-                        </div>
-                    </div>
-                    <div class="contact-header">
-                        <div><i class="fas fa-envelope"></i> sodes.amin123@gmail.com</div>
-                        <div><i class="fas fa-map-marker-alt"></i> Faculty of Biology</div>
+    <!-- Video Header -->
+    <header class="video-header">
+        <div class="video-overlay">
+            <div class="header-content">
+                <div class="hero">
+                    <h2>Advancing Environmental Health Research in Afghanistan</h2>
+                    <p>Bridging science, policy, and community for sustainable environmental solutions</p>
+                    <div class="cta-buttons">
+                        <a href="research.html" class="btn">Explore Our Research</a>
+                        <a href="opportunities.html" class="btn btn-outline">Join Our Team</a>
                     </div>
                 </div>
-        
-            <div class="hero">
-                <h2>Connecting Environmental Research to Public Health Solutions</h2>
-                <p>Bridging laboratory science, field ecology, and social behavior to address environmental challenges in Afghanistan</p>
-                <div class="cta-buttons">
-                    <a href="research.html" class="btn">Explore Our Research</a>
-                    <a href="pubs.html" class="btn btn-outline">View Publications</a>
-                </div>
-           </div>
+            </div>
         </div>
-    </header> 
-    
+        
+        <div class="header-top">
+            <div class="logo-container">
+                <img src="./Logo.png" alt="Eco-Health Nexus Group Logo" class="logo">
+                <div class="logo-text">
+                    <h1>Eco-Health Nexus</h1>
+                    <div class="tagline">Kabul University Research Group</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Fallback background image if video doesn't load -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(26, 83, 92, 0.8), rgba(26, 83, 92, 0.9)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3') center/cover; z-index: 1;"></div>
+    </header>
+
     <!-- Navigation -->
     <nav class="main-nav">
         <div class="container nav-container">
@@ -591,202 +702,311 @@
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="research.html">Research Projects</a></li>
                 <li><a href="pubs.html">Publications</a></li>
-                <li><a href="tea.html">Our Team</a></li>
-                <li><a href="news.html">News</a></li>
+                <li><a href="our-team.html">Our Team</a></li>
+                <li><a href="news.html">News & Updates</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="opportunities.html">Opportunities</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="main-content">
+    <!-- Featured Research -->
+    <section class="featured-research">
         <div class="container">
-            <!-- Four Box Grid Layout -->
-            <div class="grid-container">
-                <!-- Box 1: Our Mission -->
-                <div class="box fade-in">
-                    <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
-                    <ul class="mission-list">
-                        <li>Advancing ecological and toxicological research in Afghanistan</li>
-                        <li>Linking pollutants to ecosystem and public health impacts</li>
-                        <li>Promoting evidence-based environmental policy solutions</li>
-                        <li>Training the next generation of environmental scientists</li>
-                    </ul>
-                    <a href="research.html" class="btn" style="margin-top: 1.5rem;">Learn More</a>
+            <div class="featured-card fade-in">
+                <div class="featured-image">
+                    <i class="fas fa-microscope"></i>
                 </div>
-
-                <!-- Box 2: Our Team -->
-                <div class="box fade-in">
-                    <h2><i class="fas fa-users"></i> Our Team</h2>
-                    
-                    <div class="team-member">
-                        <h3>Principal Investigator</h3>
-                        <p><strong>Naweedullah Amin (MSc in Ecology)</strong></p>
-                        <p>Head of Department | Assistant Professor</p>
-                        <p>Ecotoxicology researcher with over 6 years of academic experience in assessing environmental impacts of pollutants on aquatic species.</p>
-                    </div>
-
-                    <div class="team-member">
-                        <h3>Undergraduate Students</h3>
-                        <p>We mentor 20+ undergraduate researchers in advanced ecological methodologies and toxicological studies at Kabul University.</p>
-                    </div>
-
-                    <div class="team-links">
-                        <a href="mailto:sodes.amin123@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-                        <a href="https://orcid.org/0000-0001-7887-4902"><i class="fab fa-orcid"></i> ORCID</a>
-                        <a href="https://linkedin.com/in/naweedullah-amin"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    </div>
-                    
-                    <a href="#contact" class="btn btn-outline" style="background: transparent; border-color: var(--secondary); color: var(--secondary); margin-top: 1rem;">Join Our Team</a>
-                </div>
-
-                <!-- Box 3: Research Focus -->
-                <div class="box fade-in">
-                    <h2><i class="fas fa-microscope"></i> Research Focus</h2>
-                    <div class="focus-grid">
-                        <div class="focus-area">
-                            <div class="focus-icon">🧪</div>
-                            <div class="focus-content">
-                                <h3>Nanoparticle Ecotoxicology</h3>
-                                <p>Investigating developmental toxicity of metal oxide nanoparticles in aquatic models</p>
-                            </div>
-                        </div>
-                        <div class="focus-area">
-                            <div class="focus-icon">💧</div>
-                            <div class="focus-content">
-                                <h3>Water Quality & Fish Health</h3>
-                                <p>Assessing aquaculture conditions and fish health using biometric indices</p>
-                            </div>
-                        </div>
-                        <div class="focus-area">
-                            <div class="focus-icon">🥤</div>
-                            <div class="focus-content">
-                                <h3>Plastic Pollution & Behavior</h3>
-                                <p>Applying Theory of Planned Behavior to understand plastic waste management</p>
-                            </div>
-                        </div>
-                        <div class="focus-area">
-                            <div class="focus-icon">🏥</div>
-                            <div class="focus-content">
-                                <h3>Environmental Public Health</h3>
-                                <p>Studying knowledge, attitudes, and practices regarding environmental health risks</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Box 4: News & Updates -->
-                <div class="box fade-in">
-                    <h2><i class="fas fa-newspaper"></i> News & Updates</h2>
-                    <div class="news-item">
-                        <h3><i class="fas fa-rocket"></i> New Research Projects Launched</h3>
-                        <p>Five new studies initiated focusing on water safety, medical waste, plastic pollution, air quality, and fish consumption in Kabul.</p>
-                    </div>
-                    <div class="news-item">
-                        <h3><i class="fas fa-book"></i> Recent Publications</h3>
-                        <p>New papers published on nanoparticle toxicity and salinity effects in Environmental Toxicology and Chemistry.</p>
-                        <a href="pubs.html" class="btn" style="margin-top: 1rem;">View Publications →</a>
-                    </div>
-                    <div class="news-item">
-                        <h3><i class="fas fa-award"></i> Leadership Role</h3>
-                        <p>Naweedullah Amin appointed as Head of Zoology Department, Kabul University.</p>
-                    </div>
+                <div class="featured-content">
+                    <span class="featured-badge">Featured Research</span>
+                    <h2 class="featured-title">Nanoparticle Ecotoxicology in Aquatic Ecosystems</h2>
+                    <p class="featured-description">Investigating the environmental impacts and toxicity mechanisms of metal oxide nanoparticles on aquatic organisms, with focus on developmental effects and risk assessment.</p>
+                    <a href="research.html" class="btn" style="align-self: flex-start;">Learn More →</a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Metrics Section -->
-            <div class="metrics fade-in">
-                <div class="container">
-                    <h2 style="color: white; margin-bottom: 3rem;">Our Impact</h2>
-                    <div class="metrics-grid">
-                        <div class="metric-item">
-                            <div class="metric-value">10+</div>
-                            <div class="metric-label">Peer-Reviewed Publications</div>
-                        </div>
-                        <div class="metric-item">
-                            <div class="metric-value">20+</div>
-                            <div class="metric-label">Undergraduate Researchers</div>
-                        </div>
-                        <div class="metric-item">
-                            <div class="metric-value">5</div>
-                            <div class="metric-label">Active Research Projects</div>
-                        </div>
-                        <div class="metric-item">
-                            <div class="metric-value">2</div>
-                            <div class="metric-label">International Collaborations</div>
-                        </div>
+    <!-- Values & Vision -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Values & Vision</h2>
+                <p>Guiding principles that drive our research and impact</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card fade-in">
+                    <div class="value-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="value-title">Research Excellence</h3>
+                    <p>Rigorous, evidence-based scientific inquiry addressing pressing environmental challenges</p>
+                </div>
+                
+                <div class="value-card fade-in">
+                    <div class="value-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="value-title">Student Mentorship</h3>
+                    <p>Training the next generation of environmental scientists and leaders in Afghanistan</p>
+                </div>
+                
+                <div class="value-card fade-in">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="value-title">Collaboration</h3>
+                    <p>Building partnerships across disciplines and borders to amplify our impact</p>
+                </div>
+                
+                <div class="value-card fade-in">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="value-title">Sustainability</h3>
+                    <p>Developing solutions that promote environmental health and sustainable development</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners & Collaborators -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Partners & Collaborators</h2>
+                <p>Working together for greater impact</p>
+            </div>
+            
+            <div class="partners-grid">
+                <div class="partner-logo" style="background: #f0f0f0; width: 150px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                    <span style="color: var(--primary); font-weight: bold;">Kabul University</span>
+                </div>
+                <div class="partner-logo" style="background: #f0f0f0; width: 150px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                    <span style="color: var(--primary); font-weight: bold;">Ministry of Environment</span>
+                </div>
+                <div class="partner-logo" style="background: #f0f0f0; width: 150px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                    <span style="color: var(--primary); font-weight: bold;">World Bank HEDP</span>
+                </div>
+                <div class="partner-logo" style="background: #f0f0f0; width: 150px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                    <span style="color: var(--primary); font-weight: bold;">Research Networks</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Metrics -->
+    <section class="metrics-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Our Research Impact</h2>
+                <p style="color: rgba(255,255,255,0.9);">Quantifying our contributions to environmental science</p>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-item count-up">
+                    <div class="metric-icon">📄</div>
+                    <div class="metric-value" data-count="15">0</div>
+                    <div class="metric-label">Peer-Reviewed Publications</div>
+                </div>
+                
+                <div class="metric-item count-up">
+                    <div class="metric-icon">🧪</div>
+                    <div class="metric-value" data-count="8">0</div>
+                    <div class="metric-label">Research Projects</div>
+                </div>
+                
+                <div class="metric-item count-up">
+                    <div class="metric-icon">🎓</div>
+                    <div class="metric-value" data-count="6">0</div>
+                    <div class="metric-label">Students Trained</div>
+                </div>
+                
+                <div class="metric-item count-up">
+                    <div class="metric-icon">🌍</div>
+                    <div class="metric-value" data-count="3">0</div>
+                    <div class="metric-label">International Collaborations</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Carousel -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research in Action</h2>
+                <p>Visual insights into our laboratory and field work</p>
+            </div>
+            
+            <div class="gallery-carousel">
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Laboratory Analysis</h4>
+                        <p>Advanced chemical and biological testing</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Field Sampling</h4>
+                        <p>Environmental monitoring across Afghanistan</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Team Collaboration</h4>
+                        <p>Working together on research solutions</p>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <!-- Footer -->
-    <footer class="main-footer" id="contact">
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Stay Updated</h2>
+                <p>Get the latest research news and opportunities</p>
+            </div>
+            
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="main-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-about">
+                    <img src="./Logo.png" alt="Eco-Health Nexus Logo" class="footer-logo">
                     <h3>Eco-Health Nexus Group</h3>
-                    <p>Advancing environmental health research at Kabul University through interdisciplinary approaches in ecotoxicology, water quality, and public behavior studies.</p>
+                    <p>Advancing environmental health research through interdisciplinary science, education, and community engagement at Kabul University.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-orcid"></i></a>
-                        <a href="https://linkedin.com/in/naweedullah-amin"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-google-scholar"></i></a>
-                        <a href="mailto:sodes.amin123@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="mailto:sodes.amin123@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://orcid.org/0000-0001-7887-4902" title="ORCID"><i class="fab fa-orcid"></i></a>
+                        <a href="https://linkedin.com/in/naweedullah-amin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="research.html">Research Projects</a></li>
-                        <li><a href="pubs.html">Publications</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="research.html"><i class="fas fa-flask"></i> Research</a></li>
+                        <li><a href="pubs.html"><i class="fas fa-book"></i> Publications</a></li>
+                        <li><a href="our-team.html"><i class="fas fa-users"></i> Our Team</a></li>
+                        <li><a href="opportunities.html"><i class="fas fa-briefcase"></i> Opportunities</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-contact">
-                    <h3>Contact Us</h3>
+                    <h3>Contact</h3>
                     <p><i class="fas fa-envelope"></i> sodes.amin123@gmail.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Faculty of Biology<br>Kabul University<br>Kabul, Afghanistan</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Faculty of Biology</p>
+                    <p><i class="fas fa-university"></i> Kabul University</p>
+                    <p><i class="fas fa-globe"></i> Kabul, Afghanistan</p>
+                </div>
+                
+                <div class="footer-social">
+                    <h3>Connect</h3>
+                    <p>Follow our research activities and stay updated with our latest findings and publications.</p>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 The Eco-Health Nexus Group | Faculty of Biology, Kabul University</p>
+                <p>&copy; 2025 The Eco-Health Nexus Group | Faculty of Biology, Kabul University | Principal Investigator: <a href="https://orcid.org/0000-0001-7887-4902" style="color: var(--accent); text-decoration: none;">Naweedullah Amin</a></p>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
     <script>
-        // Simple fade-in animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.fade-in');
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Animated Counter
+        const counters = document.querySelectorAll('.metric-value');
+        const speed = 200;
+        
+        const startCounting = (element) => {
+            const target = parseInt(element.getAttribute('data-count'));
+            const count = parseInt(element.innerText);
+            const increment = Math.ceil(target / speed);
             
-            const fadeInOnScroll = function() {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.style.opacity = "1";
-                        element.style.transform = "translateY(0)";
+            if (count < target) {
+                element.innerText = count + increment;
+                setTimeout(() => startCounting(element), 1);
+            } else {
+                element.innerText = target;
+            }
+        };
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('count-up')) {
+                        startCounting(entry.target);
                     }
-                });
-            };
-            
-            // Set initial state
-            fadeElements.forEach(element => {
-                element.style.opacity = "0";
-                element.style.transform = "translateY(20px)";
-                element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
             });
-            
-            window.addEventListener('scroll', fadeInOnScroll);
-            fadeInOnScroll(); // Check on load
+        }, observerOptions);
+        
+        // Observe elements
+        document.querySelectorAll('.fade-in, .count-up').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            observer.observe(el);
+        });
+        
+        // Newsletter Form Handler
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter-input').value;
+            alert(`Thank you for subscribing with: ${email}\nWe'll keep you updated with our latest research!`);
+            this.reset();
         });
     </script>
 </body>
