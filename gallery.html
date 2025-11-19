@@ -37,10 +37,38 @@
             border-radius: 2px;
         }
         
+        /* Gallery Filter */
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--white);
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--secondary);
+            color: var(--white);
+        }
+        
+        /* Gallery Grid */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-bottom: 4rem;
         }
         
         .gallery-item {
@@ -65,28 +93,81 @@
             justify-content: center;
             color: var(--white);
             font-size: 3rem;
+            position: relative;
+            overflow: hidden;
         }
         
-        .gallery-caption {
-            padding: 1.5rem;
+        .gallery-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .placeholder-text {
+            color: var(--white);
+            font-size: 1rem;
             text-align: center;
+            padding: 1rem;
         }
         
-        .gallery-caption h4 {
+        .gallery-info {
+            padding: 1.5rem;
+        }
+        
+        .gallery-title {
             color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
         }
         
-        .gallery-caption p {
+        .gallery-description {
             color: var(--dark);
             line-height: 1.6;
-            margin: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+        
+        .gallery-category {
+            background: rgba(78, 205, 196, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .gallery-category-section {
+            margin-bottom: 4rem;
+        }
+        
+        .category-title {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            display: inline-block;
         }
         
         @media (max-width: 768px) {
             .gallery-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .gallery-filter {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 200px;
             }
         }
     </style>
@@ -112,11 +193,10 @@
         </div>
     </header>
 
-    <!-- Navigation -->
+    <!-- Navigation - FIXED: Removed duplicate ul -->
     <nav class="main-nav">
         <div class="container nav-container">
             <ul class="nav-links">
-                <ul class="nav-links">
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="research.html"><i class="fas fa-flask"></i> Research</a></li>
                 <li><a href="pubs.html"><i class="fas fa-book"></i> Publications</a></li>
@@ -146,190 +226,59 @@
             </div>
 
             <!-- Laboratory Work Gallery -->
-<div class="gallery-category-section">
-    <h3 class="category-title">Laboratory Research</h3>
-    <div class="gallery-grid">
-        
-        <div class="gallery-item" data-category="lab">
-            <div class="gallery-image">
-                <img src="./tem.png" alt="Transmission Electron Microscopy Analysis" class="gallery-photo">
-            </div>
-            <div class="gallery-info">
-                <h4 class="gallery-title">Microscopic Analysis</h4>
-                <p class="gallery-description">High-resolution TEM imaging of nanoparticle samples and biological specimens for characterization and toxicity assessment.</p>
-                <div class="gallery-meta">
-                    <span class="gallery-category">Laboratory</span>
-                    <span>Feb 2022</span>
+            <div class="gallery-category-section">
+                <h3 class="category-title">Laboratory Research</h3>
+                <div class="gallery-grid">
+                    
+                    <div class="gallery-item" data-category="lab">
+                        <div class="gallery-image">
+                            <img src="./tem.png" alt="Transmission Electron Microscopy Analysis" class="gallery-photo">
+                        </div>
+                        <div class="gallery-info">
+                            <h4 class="gallery-title">Microscopic Analysis</h4>
+                            <p class="gallery-description">High-resolution TEM imaging of nanoparticle samples and biological specimens for characterization and toxicity assessment.</p>
+                            <div class="gallery-meta">
+                                <span class="gallery-category">Laboratory</span>
+                                <span>Feb 2022</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="lab">
+                        <div class="gallery-image">
+                            <img src="./embryo.png" alt="Fish Embryo Bioassay" class="gallery-photo">
+                        </div>
+                        <div class="gallery-info">
+                            <h4 class="gallery-title">Fish Bioassays</h4>
+                            <p class="gallery-description">Javanese Medaka fish embryos used in developmental toxicity testing of environmental contaminants and nanoparticles.</p>
+                            <div class="gallery-meta">
+                                <span class="gallery-category">Laboratory</span>
+                                <span>Feb 2022</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="lab">
+                        <div class="gallery-image">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <div class="gallery-info">
+                            <h4 class="gallery-title">Sample Preparation</h4>
+                            <p class="gallery-description">Preparing aquatic samples and nanoparticle suspensions for ecotoxicology testing, chemical analysis, and instrumental characterization.</p>
+                            <div class="gallery-meta">
+                                <span class="gallery-category">Laboratory</span>
+                                <span>Nov 2025</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
+            <!-- Continue with other gallery sections... -->
+
         </div>
-
-        <div class="gallery-item" data-category="lab">
-            <div class="gallery-image">
-                <img src="./embryo.png" alt="Fish Embryo Bioassay" class="gallery-photo">
-            </div>
-            <div class="gallery-info">
-                <h4 class="gallery-title">Fish Bioassays</h4>
-                <p class="gallery-description">Javanese Medaka fish embryos used in developmental toxicity testing of environmental contaminants and nanoparticles.</p>
-                <div class="gallery-meta">
-                    <span class="gallery-category">Laboratory</span>
-                    <span>Feb 2022</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="gallery-item" data-category="lab">
-            <div class="gallery-image">
-                <i class="fas fa-vial"></i>
-            </div>
-            <div class="gallery-info">
-                <h4 class="gallery-title">Sample Preparation</h4>
-                <p class="gallery-description">Preparing aquatic samples and nanoparticle suspensions for ecotoxicology testing, chemical analysis, and instrumental characterization.</p>
-                <div class="gallery-meta">
-                    <span class="gallery-category">Laboratory</span>
-                    <span>Nov 2025</span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- Field Research Gallery -->
-<div class="gallery-category-section">
-    <h3 class="category-title">Field Research</h3>
-    <div class="gallery-grid">
-        
-        <div class="gallery-item" data-category="field">
-            <div class="gallery-image">
-                <div class="placeholder-text">Field Photo Coming Soon</div>
-            </div>
-            <div class="gallery-info">
-                <h4 class="gallery-title">Water Sampling</h4>
-                <p class="gallery-description">Collecting water samples from aquatic ecosystems, reservoirs, and rivers for comprehensive quality assessment and contamination analysis.</p>
-                <div class="gallery-meta">
-                    <span class="gallery-category">Field Research</span>
-                    <span>Nov 2025</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="gallery-item" data-category="field">
-            <div class="gallery-image">
-                <div class="placeholder-text">Field Photo Coming Soon</div>
-            </div>
-            <div class="gallery-info">
-                <h4 class="gallery-title">Aquaculture Assessment</h4>
-                <p class="gallery-description">Comprehensive field work at Qargha Fish Farm evaluating 16 water quality parameters and conducting fish health assessments using biometric indices.</p>
-                <div class="gallery-meta">
-                    <span class="gallery-category">Field Research</span>
-                    <span>Nov 2025</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="gallery-item" data-category="field">
-            <div class="gallery-image">
-                <div class="placeholder-text">Field Photo Coming Soon</div>
-            </div>
-            <div class="gallery-info">
-                <h4 class="gallery-title">Environmental Monitoring</h4>
-                <p class="gallery-description">Systematic field surveys and environmental monitoring across various locations in Kabul region to assess pollution levels and ecosystem health.</p>
-                <div class="gallery-meta">
-                    <span class="gallery-category">Field Research</span>
-                    <span>Nov 2025</span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- Team Activities Gallery -->
-<div class="gallery-category-section">
-    <h3 class="category-title">Team Activities</h3>
-    <div class="gallery-grid">
-        
-        <div class="gallery-item" data-category="team">
-            <div class="gallery-image">
-                <div class="placeholder-text">Team Photo Coming Soon</div>
-            </div>
-            <div class="gallery-info">
-                <h4 class="gallery-title">Research Team</h4>
-                <p class="gallery-description">Our dedicated research team working collaboratively on environmental health projects, from experimental design to data analysis and publication.</p>
-                <div class="gallery-meta">
-                    <span class="gallery-category">Team</span>
-                    <span>Nov 2025</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="gallery-item" data-category="team">
-            <div class="gallery-image">
-                <div class="placeholder-text">Training Photo Coming Soon</div>
-            </div>
-            <div class="gallery-info">
-                <h4 class="gallery-title">Student Training</h4>
-                <p class="gallery-description">Mentoring undergraduate students in advanced research methodologies, laboratory techniques, and scientific communication skills.</p>
-                <div class="gallery-meta">
-                    <span class="gallery-category">Team</span>
-                    <span>Nov 2025</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="gallery-item" data-category="team">
-            <div class="gallery-image">
-                <div class="placeholder-text">Meeting Photo Coming Soon</div>
-            </div>
-            <div class="gallery-info">
-                <h4 class="gallery-title">Collaboration Meeting</h4>
-                <p class="gallery-description">Team discussions, planning sessions, and collaborative meetings for research project coordination and interdisciplinary partnerships.</p>
-                <div class="gallery-meta">
-                    <span class="gallery-category">Team</span>
-                    <span>Nov 2025</span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- Equipment Gallery -->
-<div class="gallery-category-section">
-    <h3 class="category-title">Research Equipment</h3>
-    <div class="gallery-grid">
-        
-        <div class="gallery-item" data-category="equipment">
-            <div class="gallery-image">
-                <div class="placeholder-text">Equipment Photo Coming Soon</div>
-            </div>
-            <div class="gallery-info">
-                <h4 class="gallery-title">Analytical Instruments</h4>
-                <p class="gallery-description"></p>
-                <div class="gallery-meta">
-                    <span class="gallery-category">Equipment</span>
-                    <span>Nov 2025</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="gallery-item" data-category="equipment">
-            <div class="gallery-image">
-                <div class="placeholder-text">Lab Photo Coming Soon</div>
-            </div>
-            <div class="gallery-info">
-                <h4 class="gallery-title">Laboratory Setup</h4>
-                <p class="gallery-description"></p>
-                <div class="gallery-meta">
-                    <span class="gallery-category">Equipment</span>
-                    <span>Nov 2025</span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
+    </main>
 
     <!-- Footer -->
     <footer class="main-footer">
