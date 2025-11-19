@@ -50,7 +50,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(26, 83, 92, 0.7), rgba(26, 83, 92, 0.9)), url('https://images.unsplash.com/photo-1587477708290-0938247bf0f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+            background: linear-gradient(rgba(26, 83, 92, 0.7), rgba(26, 83, 92, 0.9)), 
+                        url('https://images.unsplash.com/photo-1587477708290-0938247bf0f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
             z-index: 1;
         }
         
@@ -224,7 +225,6 @@
             transform: translateY(-10px);
             box-shadow: 0 30px 60px rgba(0,0,0,0.2);
         }
-        
         
         .featured-image {
             flex: 1;
@@ -769,42 +769,41 @@
         </div>
     </section>
 
-    
-
+    <!-- Research Impact Section -->
     <section class="metrics-section">
-    <div class="container">
-        <div class="section-title">
-            <h2 style="color: white;">Our Research Impact</h2>
-            <p style="color: rgba(255,255,255,0.9);">Quantifying our contributions to environmental science</p>
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Our Research Impact</h2>
+                <p style="color: rgba(255,255,255,0.9);">Quantifying our contributions to environmental science</p>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-icon">📄</div>
+                    <div class="metric-value">15+</div>
+                    <div class="metric-label">Peer-Reviewed Publications</div>
+                </div>
+                
+                <div class="metric-item">
+                    <div class="metric-icon">🧪</div>
+                    <div class="metric-value">8</div>
+                    <div class="metric-label">Research Projects</div>
+                </div>
+                
+                <div class="metric-item">
+                    <div class="metric-icon">🎓</div>
+                    <div class="metric-value">20+</div>
+                    <div class="metric-label">Students Trained</div>
+                </div>
+                
+                <div class="metric-item">
+                    <div class="metric-icon">🌍</div>
+                    <div class="metric-value">3</div>
+                    <div class="metric-label">International Collaborations</div>
+                </div>
+            </div>
         </div>
-        
-        <div class="metrics-grid">
-            <div class="metric-item">
-                <div class="metric-icon">📄</div>
-                <div class="metric-value">15+</div>
-                <div class="metric-label">Peer-Reviewed Publications</div>
-            </div>
-            
-            <div class="metric-item">
-                <div class="metric-icon">🧪</div>
-                <div class="metric-value">8</div>
-                <div class="metric-label">Research Projects</div>
-            </div>
-            
-            <div class="metric-item">
-                <div class="metric-icon">🎓</div>
-                <div class="metric-value">20+</div>
-                <div class="metric-label">Students Trained</div>
-            </div>
-            
-            <div class="metric-item">
-                <div class="metric-icon">🌍</div>
-                <div class="metric-value">3</div>
-                <div class="metric-label">International Collaborations</div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Gallery Carousel -->
     <section class="gallery-section">
