@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - The Eco-Health Nexus Group</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-content {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .biography-section {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+        }
+        
+        .profile-header {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent);
+        }
+        
+        .profile-info {
+            flex: 1;
+        }
+        
+        .profile-name {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-title {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .profile-department {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .biography-content {
+            line-height: 1.8;
+            color: var(--dark);
+        }
+        
+        .biography-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .expertise-section {
+            background: rgba(78, 205, 196, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+        
+        .expertise-title {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .expertise-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            list-style: none;
+        }
+        
+        .expertise-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .expertise-list i {
+            color: var(--accent);
+        }
+        
+        .roles-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .role-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .role-title {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .role-description {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-image {
+                align-self: center;
+            }
+            
+            .roles-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <img src="./Logo.png" alt="Eco-Health Nexus Group Logo" class="logo">
+                    <div class="logo-text">
+                        <h1>Eco-Health Nexus</h1>
+                        <div class="tagline">Kabul University Research Group</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero">
+                <h2>About</h2>
+                <p>Learn about our principal investigator and research leadership</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html" class="active"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="research.html"><i class="fas fa-flask"></i> Research</a></li>
+                <li><a href="pubs.html"><i class="fas fa-book"></i> Publications</a></li>
+                <li><a href="tea.html"><i class="fas fa-users"></i> Team</a></li>
+                <li><a href="news.html"><i class="fas fa-newspaper"></i> News</a></li>
+                <li><a href="gallery.html"><i class="fas fa-images"></i> Gallery</a></li>
+                <li><a href="opportunities.html"><i class="fas fa-briefcase"></i> Opportunities</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Content -->
+    <main class="about-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Principal Investigator</h2>
+                <p>Leadership and expertise driving our research initiatives</p>
+            </div>
+
+            <div class="biography-section">
+                <div class="profile-header">
+                    <div class="profile-image-placeholder">
+                        <div style="width: 150px; height: 150px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <h1 class="profile-name">Assistant Professor Naweedullah Amin</h1>
+                        <div class="profile-title">Principal Investigator</div>
+                        <div class="profile-department">
+                            <i class="fas fa-university"></i> Department of Zoology, Faculty of Biology<br>
+                            <i class="fas fa-map-marker-alt"></i> Kabul University, Afghanistan
+                        </div>
+                    </div>
+                </div>
+
+                <div class="biography-content">
+                    <p>Assistant Professor Naweedullah Amin is a faculty member in the Department of Zoology, Faculty of Biology, Kabul University. He has over six years of academic and research experience in aquatic ecotoxicology, water quality assessment, and environmental pollution studies. His work focuses on the impacts of chemical pollutants and nanoparticles on aquatic organisms, with an emphasis on fish physiology, ecosystem health, and environmental risk assessment.</p>
+
+                    <p>Mr. Amin holds a Master's degree in Ecology from Universiti Putra Malaysia, where he graduated with a perfect GPA (4.00) under the competitive World Bank HEDP Scholarship. He earned his Bachelor's degree in Biology with distinction from Kabul University. His research findings have been published in several reputable international journals, and he has presented at recognized conferences, including the International Fundamental Science Congress in Malaysia.</p>
+
+                    <div class="expertise-section">
+                        <h3 class="expertise-title">Research Expertise & Technical Skills</h3>
+                        <ul class="expertise-list">
+                            <li><i class="fas fa-check"></i> Aquatic Ecotoxicology</li>
+                            <li><i class="fas fa-check"></i> Water Quality Assessment</li>
+                            <li><i class="fas fa-check"></i> Nanoparticle Toxicology</li>
+                            <li><i class="fas fa-check"></i> Environmental Risk Assessment</li>
+                            <li><i class="fas fa-check"></i> Fish Physiology & Ecosystem Health</li>
+                            <li><i class="fas fa-check"></i> Biostatistical Analysis (Python, SPSS)</li>
+                            <li><i class="fas fa-check"></i> Advanced Laboratory Techniques</li>
+                            <li><i class="fas fa-check"></i> XRD, DLS, TEM, ICP-MS Analysis</li>
+                        </ul>
+                    </div>
+
+                    <p>He currently serves as Head of the Zoology Department, while also contributing as a member of the Faculty Academic Council, University Research Council, and University Promotions Committee. His additional roles include leading the Faculty Research Committee and supervising undergraduate research projects.</p>
+
+                    <p>Assistant Professor Amin is also an active peer reviewer for international journals such as Ecotoxicology and Environmental Safety. His technical expertise includes biostatistical analysis (Python, SPSS), advanced laboratory techniques (XRD, DLS, TEM, ICP-MS), and interdisciplinary environmental research methodologies.</p>
+
+                    <p>He is recognized for his contributions to advancing environmental science research in Afghanistan and for supporting the development of young researchers through academic mentorship and capacity-building activities.</p>
+                </div>
+
+                <div class="roles-section">
+                    <div class="role-card">
+                        <h3 class="role-title"><i class="fas fa-briefcase"></i> Current Positions</h3>
+                        <div class="role-description">
+                            <strong>Head of Zoology Department</strong><br>
+                            Faculty of Biology, Kabul University<br><br>
+                            <strong>Principal Investigator</strong><br>
+                            Eco-Health Nexus Research Group<br><br>
+                            <strong>Faculty Research Committee Lead</strong>
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <h3 class="role-title"><i class="fas fa-users"></i> Committee Memberships</h3>
+                        <div class="role-description">
+                            • Faculty Academic Council<br>
+                            • University Research Council<br>
+                            • University Promotions Committee<br>
+                            • Faculty Research Committee (Chair)
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <h3 class="role-title"><i class="fas fa-graduation-cap"></i> Education</h3>
+                        <div class="role-description">
+                            <strong>M.Sc. Ecology</strong><br>
+                            Universiti Putra Malaysia<br>
+                            GPA: 4.00/4.00<br>
+                            World Bank HEDP Scholarship<br><br>
+                            
+                            <strong>B.Sc. Biology</strong><br>
+                            Kabul University<br>
+                            Graduated with Distinction
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 The Eco-Health Nexus Group | Faculty of Biology, Kabul University</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
